@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Punta Cana 2027 · Comparativo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Inter:wght@400;500;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: alegre y práctico, de grupo de amigos que decide junto
+   IDEA: tablero de embarque + contrato de viaje firmado en la playa
+   PICTURE: intro animada BOG→PUJ, olas vivas, barras que crecen; contrato tipo pergamino con firma
+   COLOUR and TYPE: mar profundo, turquesa, coral, arena; Sora + Inter, Caveat para firmas
+   LAYOUT: portada, pestañas pegajosas (Comparativo / Contrato), una columna móvil */
+:root{color-scheme:light dark;
+--bg:light-dark(#f4fafa,#061a22);--card:light-dark(#fff,#0b2a35);--ink:light-dark(#0b2530,#e7f5f6);
+--mute:light-dark(#4f6b74,#9dbcc3);--line:light-dark(#d6e7ea,#1b4150);--sand:light-dark(#fff7e8,#1a2620);
+--sea:#063a4a;--tq:#14b8bf;--coral:#ff6b4a;--ok:#1f9d6b;--bad:#e5484d}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:Sora,Inter,sans-serif;line-height:1.08;text-wrap:balance;margin:0}
+h1{font-size:clamp(32px,6.5vw,52px);font-weight:800}h2{font-size:clamp(22px,4vw,28px);margin-bottom:6px}h3{font-size:18px}
+.band{padding:clamp(24px,4vw,52px) max(5vw,16px)}.wrap{max-width:1100px;margin:auto}
+.lead{color:var(--mute);margin:0 0 16px}
+button{font-family:inherit}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
+
+#intro{position:fixed;inset:0;z-index:50;background:#04222c;display:grid;place-items:center;overflow:hidden;transition:opacity .7s,visibility .7s}
+#intro.done{opacity:0;visibility:hidden}
+#intro .stage{position:absolute;inset:0}
+#intro svg{width:100%;height:100%;display:block}
+.sea{fill:url(#seaG)}
+.grid line{stroke:#2a8b96;stroke-width:.6;opacity:.35}
+.land{fill:#1d6b5a;stroke:#5fc7a8;stroke-width:1.2;opacity:0;animation:landIn .9s ease-out forwards}
+.land.b{fill:#247a63}
+@keyframes landIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.ripple{fill:none;stroke:#7fe3e6;stroke-width:1.2;stroke-linecap:round;opacity:.35;animation:rip 3s ease-in-out infinite}
+@keyframes rip{50%{transform:translateX(10px);opacity:.6}}
+.cloud{fill:#fff;opacity:.85;animation:cloud linear infinite}
+@keyframes cloud{from{transform:translateX(-160px)}to{transform:translateX(820px)}}
+.routeBg{fill:none;stroke:#bff3f5;stroke-width:2;stroke-dasharray:5 7;opacity:.35}
+.routeFg{fill:none;stroke:#ffb199;stroke-width:3.5;stroke-linecap:round}
+.pin{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:pinIn .6s cubic-bezier(.3,1.6,.5,1) forwards}
+@keyframes pinIn{from{opacity:0;transform:translateY(-30px) scale(.6)}to{opacity:1;transform:none}}
+.city{font:800 17px Sora,sans-serif;fill:#fff;paint-order:stroke;stroke:#04222c;stroke-width:4px}
+.cityS{font:600 12px Inter,sans-serif;fill:#bdeef0;paint-order:stroke;stroke:#04222c;stroke-width:3px}
+.ctry{font:600 11px Inter,sans-serif;fill:#9fd8c4;letter-spacing:.5px;opacity:.75}
+.pulse{transform-box:fill-box;transform-origin:center;animation:pulse 1.6s infinite}
+@keyframes pulse{0%{transform:scale(1);opacity:.8}100%{transform:scale(3.4);opacity:0}}
+.hud{position:absolute;left:0;right:0;top:env(safe-area-inset-top);max-width:760px;margin:auto;display:flex;justify-content:space-between;gap:10px;padding:12px;pointer-events:none}
+.hud div{background:rgba(4,34,44,.72);border:1px solid rgba(127,227,230,.35);border-radius:12px;padding:6px 10px;color:#bdeef0;font:600 11px Inter}
+.hud b{display:block;color:#fff;font:800 18px Sora;white-space:nowrap}
+.ihead{position:absolute;left:0;right:0;bottom:calc(84px + env(safe-area-inset-bottom));text-align:center;color:#fff;pointer-events:none}
+.ihead h2{font:800 clamp(20px,4.5vw,30px) Sora;margin:0;text-shadow:0 2px 12px rgba(0,0,0,.5);opacity:0;animation:pinIn .8s ease-out 3.6s forwards}
+.ihead p{margin:4px 0 0;color:#bdeef0;font-size:14px}
+#skip{position:absolute;bottom:max(20px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:99px;padding:10px 18px;font:600 14px Inter;min-height:44px;cursor:pointer}
+
+.hero{position:relative;background:linear-gradient(165deg,#063a4a 0%,#0a5566 55%,#0f8a90 100%);color:#fff;overflow:hidden;padding-bottom:96px}
+.hero p{color:#cdeff1}
+.pass{margin-top:18px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:18px;padding:16px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:6px 14px;align-items:center}
+.pass .ap{font:800 clamp(30px,7vw,44px) Sora;line-height:1}.pass .apn{font-size:13px;color:#bfe9ec}
+.pass .mid{position:relative;height:28px}
+.pass .mid::before{content:"";position:absolute;left:0;right:0;top:50%;border-top:2px dashed rgba(255,255,255,.45)}
+.pass .mid svg{position:absolute;top:50%;left:0;width:26px;height:26px;transform:translate(-50%,-50%);animation:fly 6s ease-in-out infinite}
+@keyframes fly{0%{left:0}50%{left:100%}50.01%{left:0;opacity:0}55%{opacity:1}100%{left:0}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;grid-column:1/-1;margin-top:8px}
+.chip{background:rgba(255,255,255,.14);border-radius:99px;padding:5px 11px;font-size:13px;white-space:nowrap}
+.waves{position:absolute;left:0;right:0;bottom:-1px;height:96px}
+.waves svg{position:absolute;bottom:0;width:200%;height:100%}
+.w1{animation:wave 14s linear infinite}.w2{animation:wave 9s linear infinite reverse;opacity:.6}
+@keyframes wave{to{transform:translateX(-50%)}}
+.sun{position:absolute;right:-60px;top:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,#ffd47a 0%,rgba(255,180,90,.35) 45%,transparent 70%);animation:glow 5s ease-in-out infinite alternate}
+@keyframes glow{to{transform:scale(1.12)}}
+
+.tabs{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);padding:10px max(5vw,16px);border-bottom:1px solid var(--line)}
+.tabs .in{max-width:1100px;margin:auto;display:flex;gap:8px}
+.tab{flex:1;max-width:240px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:700 15px Sora;border-radius:99px;padding:10px 14px;min-height:44px;cursor:pointer}
+.tab[aria-selected=true]{background:var(--sea);color:#fff;border-color:var(--sea)}
+[hidden]{display:none!important}
+
+.board{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 18px 40px rgba(6,58,74,.14)}
+.bh{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:center;margin-bottom:8px}
+.seg{display:inline-flex;background:var(--line);border-radius:99px;padding:4px}
+.seg button{border:0;background:none;color:var(--ink);font:600 14px Inter;padding:9px 13px;border-radius:99px;min-height:40px;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--sea);color:#fff}
+.row{display:grid;grid-template-columns:30px minmax(0,1fr);gap:4px 10px;padding:10px 0;border-top:1px solid var(--line)}
+.row .pos{font:800 20px Sora;color:var(--tq);grid-row:span 2;align-self:center}
+.row .top{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.row .nm{font-weight:600;font-size:15px}.row .vl{font:700 17px Sora;white-space:nowrap}
+.track{height:12px;background:var(--line);border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;border-radius:99px;transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,310px),1fr));gap:16px;margin-top:8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
+.card .hd{padding:16px 18px;color:#fff;position:relative}
+.card .hd small{font-size:12px;opacity:.9;font-weight:600}
+.card .bd{padding:16px 18px;display:flex;flex-direction:column;gap:12px;flex:1}
+.card.best{outline:3px solid var(--tq);outline-offset:-3px}
+.ribbon{position:absolute;right:12px;top:12px;background:#fff;color:var(--sea);font:700 11px Inter;padding:4px 9px;border-radius:99px}
+.price{font:800 clamp(26px,5vw,32px) Sora;white-space:nowrap}
+.sub{color:var(--mute);font-size:14px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:12px;font-weight:600;padding:3px 9px;border-radius:99px;background:var(--line)}
+.tag.ok{background:#d9f5ea;color:#11643f}.tag.warn{background:#fff3cc;color:#7a5900}
+ul.l{margin:0;padding-left:18px;font-size:15px}ul.l li{margin:3px 0}
+.pros li::marker{color:var(--ok)}.cons li::marker{color:var(--bad)}
+.fl{display:grid;grid-template-columns:62px minmax(0,1fr);gap:2px 10px;font-size:14px;border-top:1px dashed var(--line);padding-top:10px}
+.fl b{font-family:Sora;white-space:nowrap;font-size:15px}.k{font-size:12px;color:var(--mute)}
+
+.tl{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-top:12px}
+.days{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;margin-top:10px}
+.day{height:28px;border-radius:7px;background:var(--line);position:relative;overflow:hidden}
+.day i{position:absolute;top:0;bottom:0;background:linear-gradient(90deg,var(--tq),#5fd8c8);transform:scaleX(0);transform-origin:left;transition:transform .9s}
+.in .day i{transform:scaleX(1)}
+.dl{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;font-size:12px;color:var(--mute);margin-top:4px;text-align:center}
+.hrs{font:700 15px Sora;color:var(--tq)}
+
+.scroll{overflow-x:auto;border-radius:16px;border:1px solid var(--line)}
+table{border-collapse:collapse;background:var(--card);font-size:14px;width:100%}
+#mx{min-width:620px}
+th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+thead th{font-family:Sora;font-size:13px;background:light-dark(#e8f6f7,#0e3442)}
+tbody th{position:sticky;left:0;background:var(--card);font-weight:600;width:120px;box-shadow:1px 0 0 var(--line)}
+td.n{text-align:right;white-space:nowrap}
+
+.calc{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px;margin:12px 0}
+.calc label{display:grid;gap:4px;font-size:14px;color:var(--mute)}
+input[type=number],select{font:16px Inter;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);min-height:44px}
+.todo label{display:flex;gap:10px;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.todo input,.acc input{width:22px;height:22px;flex:none;margin-top:2px;accent-color:var(--tq)}
+.todo input:checked+span{text-decoration:line-through;color:var(--mute)}
+.who{font-size:12px;font-weight:700;color:var(--coral);margin-right:6px}
+.note{font-size:13px;color:var(--mute);margin-top:10px}
+
+/* contrato */
+.people{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 18px}
+.pp{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:8px 14px 8px 8px;display:flex;align-items:center;gap:8px;font:600 14px Inter;min-height:44px;cursor:pointer}
+.pp .av{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:#fff;font:700 12px Sora}
+.pp[aria-pressed=true]{border-color:var(--sea);background:var(--sea);color:#fff}
+.pp .ck{color:var(--ok);font-weight:800}
+.pp[aria-pressed=true] .ck{color:#7ff0c0}
+.paper{background:var(--sand);border:1px solid light-dark(#efd9ad,#33463a);border-radius:20px;padding:clamp(18px,4vw,36px);box-shadow:0 18px 40px rgba(120,80,20,.12);position:relative;overflow:hidden}
+.paper::after{content:"";position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(20,184,191,.18),transparent 70%)}
+.paper h2{font-size:clamp(22px,4.5vw,30px)}
+.meta{display:flex;flex-wrap:wrap;gap:8px 18px;color:var(--mute);font-size:14px;margin:8px 0 16px}
+.party{font-size:17px;margin:0 0 14px}
+.party b{color:var(--coral)}
+.role{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:18px}
+.role .ic{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--sea);color:#fff;font:800 18px Sora}
+.cl{margin:0 0 18px}
+.cl h3{font-size:16px;margin:0 0 6px;color:var(--sea)}
+:root[data-theme=dark] .cl h3{color:#7fe3e6}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .cl h3{color:#7fe3e6}}
+.cl ol{margin:0;padding-left:22px}.cl li{margin:5px 0}
+.by{font-size:12px;color:var(--mute);white-space:nowrap}
+.minor{display:block;font-size:13px;color:var(--ok);font-weight:600}
+.roles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:8px;margin-top:6px}
+.roles div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14px}
+.youb{background:var(--coral);color:#fff;font:700 11px Inter;padding:2px 7px;border-radius:99px;margin-left:4px}
+.roles div.me{border-color:var(--coral);box-shadow:0 0 0 2px var(--coral) inset}
+.sign{display:grid;gap:12px;border-top:2px dashed light-dark(#e2c48a,#3e5446);padding-top:16px;margin-top:8px}
+.acc{display:flex;gap:10px;align-items:flex-start;font-weight:600;cursor:pointer}
+.sig{font:600 34px Caveat,cursive;color:var(--sea);min-height:44px;border-bottom:1px solid var(--mute);padding:0 4px}
+:root[data-theme=dark] .sig{color:#7fe3e6}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+.btn{border:0;background:var(--coral);color:#fff;font:700 15px Inter;border-radius:99px;padding:11px 18px;min-height:44px;cursor:pointer}
+.btn.alt{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.stamp{position:absolute;right:18px;bottom:70px;transform:rotate(-12deg);border:3px solid var(--ok);color:var(--ok);font:800 18px Sora;padding:6px 12px;border-radius:10px;opacity:0;transition:opacity .4s,transform .4s}
+.stamp.on{opacity:.85;transform:rotate(-8deg) scale(1.05)}
+.tally{display:flex;align-items:center;gap:12px;margin:0 0 14px;font-size:15px}
+.tally .tr{flex:1;height:10px;background:var(--line);border-radius:99px;overflow:hidden}
+.tally .tr i{display:block;height:100%;background:var(--ok);transition:width .6s}
+
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.day i{transform:none}}
+</style>
+</head>
+<body>
+
+<div id="intro" role="img" aria-label="Animación: vuelo de Bogotá a Punta Cana sobre el mapa del Caribe">
+ <div class="stage">
+  <svg id="map" viewBox="-20 0 720 460" preserveAspectRatio="xMidYMid slice">
+   <defs>
+    <radialGradient id="seaG" cx="55%" cy="35%" r="80%"><stop offset="0" stop-color="#11a0aa"/><stop offset=".55" stop-color="#0a5f6e"/><stop offset="1" stop-color="#052f3b"/></radialGradient>
+    <linearGradient id="trail" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".8"/></linearGradient>
+    <filter id="sh" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="6" stdDeviation="4" flood-color="#000" flood-opacity=".35"/></filter>
+   </defs>
+   <g transform="translate(458 108)"><animateTransform id="pan" attributeName="transform" type="translate" from="458 108" to="340 230" begin="3.9s" dur="1.4s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines=".6 0 .3 1"/><g><animateTransform attributeName="transform" type="scale" from="1" to="1.7" begin="3.9s" dur="1.4s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines=".6 0 .3 1"/><g transform="translate(-458 -108)">
+    <rect class="sea" x="-400" y="-300" width="1500" height="1100"/>
+    <g class="grid"><line x1="0" y1="80" x2="680" y2="80"/><line x1="0" y1="180" x2="680" y2="180"/><line x1="0" y1="280" x2="680" y2="280"/><line x1="0" y1="380" x2="680" y2="380"/><line x1="130" y1="0" x2="130" y2="800"/><line x1="260" y1="0" x2="260" y2="800"/><line x1="390" y1="0" x2="390" y2="800"/><line x1="520" y1="0" x2="520" y2="800"/></g>
+    <g>
+     <path class="ripple" d="M420 200q8-5 16 0t16 0"/><path class="ripple" d="M180 170q8-5 16 0t16 0" style="animation-delay:.8s"/>
+     <path class="ripple" d="M560 170q8-5 16 0t16 0" style="animation-delay:1.4s"/><path class="ripple" d="M90 110q8-5 16 0t16 0" style="animation-delay:.4s"/>
+     <path class="ripple" d="M500 220q8-5 16 0t16 0" style="animation-delay:2s"/><path class="ripple" d="M330 190q8-5 16 0t16 0" style="animation-delay:1.1s"/>
+    </g>
+    <path class="land" d="M0 160L65 178L52 240L65 270L104 296L169 292L221 306L260 290L273 270L307 256L338 244L367 232L385 246L376 262L392 262L416 250L468 270L520 268L572 268L624 266L650 276L680 300L900 300L900 800L190 800L208 420L215 360L221 330L190 318L150 312L104 310L70 288L40 250L30 200L0 182Z" style="animation-delay:.1s"/>
+    <path class="land b" d="M26 42L104 18L182 28L234 44L286 66L309 76L273 82L216 82L208 66L156 46L104 36L39 44Z" style="animation-delay:.25s"/>
+    <path class="land b" d="M301 112L338 82L390 82L429 92L460 108L450 116L416 116L380 128L351 116L307 118Z" style="animation-delay:.35s"/>
+    <ellipse class="land b" cx="226" cy="118" rx="29" ry="8" style="animation-delay:.3s"/>
+    <ellipse class="land b" cx="507" cy="116" rx="22" ry="6" style="animation-delay:.4s"/>
+    <text class="ctry" x="260" y="420">COLOMBIA</text><text class="ctry" x="500" y="330">VENEZUELA</text>
+    <text class="ctry" x="120" y="62">CUBA</text><text class="ctry" x="200" y="140">JAMAICA</text>
+    <text class="ctry" x="355" y="104">REP. DOMINICANA</text><text class="ctry" x="490" y="136">P. RICO</text>
+    <text class="ctry" x="330" y="215" style="font-style:italic">Mar Caribe</text>
+    <path id="rt" class="routeBg" d="M309 386C300 290 380 170 458 108"/>
+    <path class="routeFg" d="M309 386C300 290 380 170 458 108" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1">
+     <animate attributeName="stroke-dashoffset" from="1" to="0" begin=".7s" dur="3s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines=".45 0 .35 1"/>
+    </path>
+    <g class="pin" style="animation-delay:.4s"><circle cx="309" cy="386" r="7" fill="#ffd47a"/><circle cx="309" cy="386" r="7" fill="#ffd47a" class="pulse"/>
+     <text x="322" y="384" class="city">BOG</text><text x="322" y="399" class="cityS">Bogotá</text></g>
+    <g class="pin" style="animation-delay:3.5s"><circle cx="458" cy="108" r="7" fill="#ff6b4a"/><circle cx="458" cy="108" r="7" fill="#ff6b4a" class="pulse"/>
+     <text x="458" y="134" text-anchor="middle" class="city">PUJ</text><text x="458" y="149" text-anchor="middle" class="cityS">Punta Cana</text></g>
+    <g filter="url(#sh)" opacity="0">
+     <set attributeName="opacity" to="1" begin=".7s"/><animate attributeName="opacity" to="0" begin="3.75s" dur=".4s" fill="freeze"/>
+     <g transform="scale(1.4)"><path d="M-34 0 L-14 -2 L-14 2 Z" fill="url(#trail)"/>
+     <path d="M18 0c0-2-2-3-5-3H4L-6-14h-5l5 11h-9l-4-5h-4l2 8-2 8h4l4-5h9l-5 11h5L4 3h9c3 0 5-1 5-3z" fill="#fff"/></g>
+     <animateMotion begin=".7s" dur="3s" fill="freeze" rotate="auto" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines=".45 0 .35 1"><mpath href="#rt"/></animateMotion>
+    </g>
+    <g><ellipse class="cloud" cx="0" cy="150" rx="46" ry="12" style="animation-duration:9s"/><ellipse class="cloud" cx="20" cy="142" rx="26" ry="12" style="animation-duration:9s"/>
+     <ellipse class="cloud" cx="-200" cy="300" rx="56" ry="13" style="animation-duration:12s;opacity:.6"/><ellipse class="cloud" cx="-180" cy="292" rx="30" ry="13" style="animation-duration:12s;opacity:.6"/>
+     <ellipse class="cloud" cx="-400" cy="60" rx="40" ry="10" style="animation-duration:10s;opacity:.7"/></g>
+   </g></g></g>
+  </svg>
+  <div class="hud"><div>Distancia<b id="hKm">0 km</b></div><div>Tiempo de vuelo<b id="hT">0h 00m</b></div><div>Viajeros<b>8</b></div></div>
+  <div class="ihead"><h2>¡Bienvenidos a Punta Cana!</h2><p>4 – 8 abril 2027</p></div>
+ </div>
+ <button id="skip">Entrar</button>
+</div>
+
+<header class="band hero">
+  <div class="sun"></div>
+  <div class="wrap" style="position:relative">
+    <h1>Punta Cana 2027</h1>
+    <p>3 opciones que aceptan a Silvana. La más barata es la de la agencia; el Riu Palace es el mejor hotel para el grupo.</p>
+    <div class="pass">
+      <div><div class="ap">BOG</div><div class="apn">Bogotá</div></div>
+      <div class="mid"><svg viewBox="-20 -16 40 32"><path d="M18 0c0-2-2-3-5-3H4L-6-14h-5l5 11h-9l-4-5h-4l2 8-2 8h4l4-5h9l-5 11h5L4 3h9c3 0 5-1 5-3z" fill="#fff"/></svg></div>
+      <div style="text-align:right"><div class="ap">PUJ</div><div class="apn">Punta Cana</div></div>
+      <div class="chips"><span class="chip">dom 4 – jue 8 abr 2027</span><span class="chip">4 noches</span><span class="chip">8 viajeros</span><span class="chip">Vuelos directos ~2h 50m</span></div>
+    </div>
+  </div>
+  <div class="waves" aria-hidden="true">
+    <svg class="w2" viewBox="0 0 1200 96" preserveAspectRatio="none"><path d="M0 50 Q150 15 300 50 T600 50 T900 50 T1200 50 V96 H0Z" fill="#7fe3e6"/></svg>
+    <svg class="w1" viewBox="0 0 1200 96" preserveAspectRatio="none"><path d="M0 60 Q150 28 300 60 T600 60 T900 60 T1200 60 V96 H0Z" style="fill:var(--bg)"/></svg>
+  </div>
+</header>
+
+<nav class="tabs" role="tablist" aria-label="Secciones"><div class="in">
+  <button class="tab" role="tab" id="t-comparativo" aria-selected="true" data-v="comparativo">Comparativo</button>
+  <button class="tab" role="tab" id="t-contrato" aria-selected="false" data-v="contrato">Contrato del viaje</button>
+</div></nav>
+
+<main id="comparativo" role="tabpanel">
+<section class="band"><div class="wrap">
+  <div class="board rv">
+    <div class="bh"><h2 style="margin:0">Ranking por precio</h2>
+      <div class="seg" role="group" aria-label="Ver precio"><button id="vTot" aria-pressed="true">Total 8</button><button id="vPp" aria-pressed="false">Por persona</button></div></div>
+    <div id="bars"></div>
+    <p class="note">COP, según las capturas, sin maletas extra.</p>
+  </div>
+</div></section>
+
+<section class="band" style="padding-top:0"><div class="wrap">
+  <h2 class="rv">Las opciones</h2>
+  <p class="lead rv">Cada combinación de hotel y vuelo es una opción independiente. Riu República se descartó: es solo para mayores de 18.</p>
+  <div class="grid" id="cards"></div>
+</div></section>
+
+<section class="band" style="padding-top:0"><div class="wrap">
+  <h2 class="rv">Tiempo real en el hotel según el vuelo</h2>
+  <p class="lead rv">Check-in 3 p.m., check-out 12 m. Incluye traslado (~30–45 min a Arena Gorda).</p>
+  <div id="tl"></div>
+</div></section>
+
+<section class="band" style="padding-top:0"><div class="wrap">
+  <h2 class="rv">Matriz completa</h2>
+  <div class="scroll rv"><table id="mx"></table></div>
+</div></section>
+
+<section class="band" style="padding-top:0"><div class="wrap">
+  <h2 class="rv">Calculadora con maletas</h2>
+  <div class="calc rv">
+    <label>Maleta por persona, ida y vuelta (COP)<input id="cB" type="number" min="0" step="10000" value="0" inputmode="numeric"></label>
+    <label>¿Cuántos llevan maleta?<input id="cBn" type="number" min="0" max="8" value="0" inputmode="numeric"></label>
+  </div>
+  <div class="scroll rv"><table><thead><tr><th>Opción</th><th style="text-align:right">Total 8</th><th style="text-align:right">Por persona</th></tr></thead><tbody id="calcT"></tbody></table></div>
+  <p class="note">Nextfly ya incluye morral de 10 kg; en Arajet y Wingo revisa qué trae la tarifa.</p>
+</div></section>
+
+<section class="band" style="padding-top:0"><div class="wrap">
+  <h2 class="rv">Pendientes antes de decidir</h2>
+  <div class="todo rv" id="todo"></div>
+</div></section>
+</main>
+
+<main id="contrato" role="tabpanel" hidden>
+<section class="band"><div class="wrap">
+  <h2>¿Quién firma?</h2>
+  <p class="lead">Elige tu nombre para ver tu contrato con tu responsabilidad y todas las condiciones.</p>
+  <div class="people" id="people"></div>
+  <div class="tally"><span id="tallyT"></span><span class="tr"><i id="tallyB"></i></span></div>
+  <article class="paper" id="paper"></article>
+  <p class="note">Las firmas quedan guardadas solo en este celular. Para compartir, usa "Copiar contrato" y pégalo en el grupo.</p>
+</div></section>
+</main>
+
+<script>
+{
+const $=id=>document.getElementById(id);
+const fmt=n=>'$'+Math.round(n).toLocaleString('es-CO');
+const N=8,AR=1007868,WG=1453051,PAL=17108042,NX=2699000;
+const F={ar:[['Ida','2:15 pm → 6:07 pm','BOG→PUJ · directo 2h 52m'],['Regreso','10:40 am → 12:30 pm','PUJ→BOG · directo 2h 50m']],
+ wg:[['Ida','9:10 am → 12:55 pm','BOG→PUJ · directo 2h 45m'],['Regreso','3:08 pm → 4:50 pm','PUJ→BOG · directo 2h 42m']]};
+const O=[
+ {n:'Nextfly · Sunscape Coco',s:'Agencia · paquete',c:'#0f8a90',t:NX*N,fl:null,
+  tags:[['ok','Admite a Silvana'],['warn','Vuelos por confirmar'],['','4★']],
+  pro:['El más barato: $2.699.000 por persona','Vuelo + hotel + traslados en un pago','Reserva con $1.200.000 y cuotas','Resort familiar con club juvenil, a ~10–15 km del aeropuerto'],
+  con:['No dice aerolínea ni horarios','Solo morral de 10 kg','Sillas aleatorias']},
+ {n:'Riu Palace Punta Cana + Arajet',s:'Directo · 7 adultos + 1 menor',c:'#b08a4a',t:PAL+AR*N,fl:F.ar,
+  tags:[['ok','Ideal para familias'],['','5★ Palace'],['ok','Splash Water World']],
+  pro:['Todo incluido 24h, a pie de playa Arena Gorda','Parque acuático y club de adolescentes RIU4U','Traslados incluidos (según RIU)','Vuelo más barato'],
+  con:['$3,6 M más que Nextfly para el grupo','Llegan casi de noche el día 1 y salen temprano el día 5']},
+ {n:'Riu Palace Punta Cana + Wingo',s:'Directo · 7 adultos + 1 menor',c:'#8a6a34',t:PAL+WG*N,fl:F.wg,
+  tags:[['ok','Ideal para familias'],['ok','Mejores horarios'],['','5★ Palace']],
+  pro:['Mismo hotel de la opción 2','Casi un día más de playa por los horarios','Vuelos directos'],
+  con:['La más cara: $28,7 M','Equipaje Wingo no especificado']}
+];
+O.forEach((o,i)=>o.i=i+1);
+const max=Math.max(...O.map(o=>o.t));
+let pp=false,started=false;
+const bars=()=>{
+ $('bars').innerHTML=O.slice().sort((a,b)=>a.t-b.t).map((o,k)=>`<div class="row"><div class="pos">${k+1}</div>
+  <div class="top"><span class="nm">${o.n}</span><span class="vl">${fmt(pp?o.t/N:o.t)}</span></div>
+  <div class="track"><div class="fill" data-w="${(o.t/max*100).toFixed(1)}" style="background:${o.c}${started?';width:'+(o.t/max*100).toFixed(1)+'%':''}"></div></div></div>`).join('');
+};
+const grow=()=>{started=true;document.querySelectorAll('.fill').forEach(f=>f.style.width=f.dataset.w+'%')};
+const sw=v=>{pp=v;$('vPp').setAttribute('aria-pressed',v);$('vTot').setAttribute('aria-pressed',!v);bars()};
+$('vPp').onclick=()=>sw(true);$('vTot').onclick=()=>sw(false);
+bars();
+
+const best=Math.min(...O.map(o=>o.t));
+$('cards').innerHTML=O.map(o=>`<article class="card rv ${o.t===best?'best':''}">
+ <div class="hd" style="background:${o.c}">${o.t===best?'<span class="ribbon">La más barata</span>':''}<small>Opción ${o.i} · ${o.s}</small><h3 style="margin-top:4px">${o.n}</h3></div>
+ <div class="bd">
+  <div><div class="price">${fmt(o.t)}</div><div class="sub">${fmt(o.t/N)} por persona · grupo de 8</div></div>
+  <div class="tags">${o.tags.map(t=>`<span class="tag ${t[0]}">${t[1]}</span>`).join('')}</div>
+  ${o.fl?o.fl.map(f=>`<div class="fl"><span class="k">${f[0]}</span><b>${f[1]}</b><span></span><span class="k">${f[2]}</span></div>`).join(''):'<div class="fl"><span class="k">Vuelos</span><span class="sub">Aerolínea y horarios por confirmar</span></div>'}
+  <div><b style="font-size:14px">A favor</b><ul class="l pros">${o.pro.map(p=>`<li>${p}</li>`).join('')}</ul></div>
+  <div><b style="font-size:14px">En contra</b><ul class="l cons">${o.con.map(p=>`<li>${p}</li>`).join('')}</ul></div>
+ </div></article>`).join('');
+
+const dn=['Dom 4','Lun 5','Mar 6','Mié 7','Jue 8'];
+const T=[['Vuelos Arajet (opción 2)',[0,19.5,4,7.5],'Llegada al hotel ~7:30 pm; salida ~7:30 am el último día','~3 días y medio'],
+ ['Vuelos Wingo (opción 3)',[0,14,4,12],'Llegada al hotel ~2 pm; disfrutan hasta el check-out del jueves','~4 días'],
+ ['Nextfly (opción 1)',null,'Pedir horarios antes de pagar la reserva','Por confirmar']];
+$('tl').innerHTML=T.map(([n,r,txt,h])=>`<div class="tl rv"><div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap"><h3>${n}</h3><span class="hrs">${h}</span></div><div class="sub">${txt}</div>
+ <div class="days">${dn.map((_,d)=>{if(!r)return'<div class="day"></div>';const s=d<r[0]?24:d===r[0]?r[1]:0,e=d>r[2]?0:d===r[2]?r[3]:24,w=Math.max(0,e-s);
+ return `<div class="day">${w?`<i style="left:${s/24*100}%;width:${w/24*100}%;transition-delay:${d*.12}s"></i>`:''}</div>`}).join('')}</div>
+ <div class="dl">${dn.map(d=>`<span>${d}</span>`).join('')}</div></div>`).join('');
+
+const M=[['Precio total',...O.map(o=>`<b>${fmt(o.t)}</b>`)],['Por persona',...O.map(o=>fmt(o.t/N))],
+ ['Compra','Agencia','Directa','Directa'],['Hotel','Sunscape Coco 4★','Riu Palace 5★','Riu Palace 5★'],
+ ['Plan','Todo incluido buffet + bebidas','Todo incluido 24h','Todo incluido 24h'],
+ ['Para Silvana','Club juvenil','Club adolescentes RIU4U, parque acuático','Club adolescentes RIU4U, parque acuático'],
+ ['Zona','Cabeza de Toro, ~10–15 km','Arena Gorda, ~25 km','Arena Gorda, ~25 km'],
+ ['Vuelo ida','Por confirmar','Arajet 2:15 pm → 6:07 pm','Wingo 9:10 am → 12:55 pm'],
+ ['Vuelo regreso','Por confirmar','Arajet 10:40 am → 12:30 pm','Wingo 3:08 pm → 4:50 pm'],
+ ['Equipaje','Morral 10 kg','Revisar tarifa','Revisar tarifa'],['Traslados','Incluidos','Incluidos (RIU)','Incluidos (RIU)'],
+ ['Pago','Reserva $1.200.000 + cuotas','Pago al reservar','Pago al reservar']];
+$('mx').innerHTML=`<thead><tr><th>Criterio</th>${O.map(o=>`<th>${o.i}. ${o.n}</th>`).join('')}</tr></thead><tbody>${M.map(r=>`<tr><th>${r[0]}</th>${r.slice(1).map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody>`;
+
+const calc=()=>{const bag=(+$('cB').value||0)*Math.min(N,+$('cBn').value||0);
+ $('calcT').innerHTML=O.slice().sort((a,b)=>a.t-b.t).map(o=>`<tr><td>${o.i}. ${o.n}</td><td class="n">${fmt(o.t+bag)}</td><td class="n">${fmt((o.t+bag)/N)}</td></tr>`).join('')};
+['cB','cBn'].forEach(i=>$(i).addEventListener('input',calc));calc();
+
+const todos=[['Nextfly','¿Qué aerolínea y qué horarios tienen los vuelos?'],['Nextfly','¿Mismo precio para Silvana (16)? ¿Cómo acomodan a 8 (dobles o triples)?'],
+ ['Nextfly','¿Los $1.200.000 de reserva son por persona? ¿Cuántas cuotas?'],['Nextfly','Costo de maleta, número de RNT y política de cancelación por escrito'],
+ ['Riu Palace','¿Cuántas habitaciones cubren los $17.108.042 y cómo quedan repartidas?'],['Riu Palace','Confirmar traslados incluidos para los 8'],
+ ['Vuelos','Revisar qué equipaje incluyen Arajet ($1.007.868) y Wingo ($1.453.051)'],['Vuelos','Comparar un día antes o después: puede bajar el precio'],
+ ['Todos','Pasaportes vigentes y permiso de salida de Silvana si no viaja con ambos padres']];
+let sv={};try{sv=JSON.parse(localStorage.getItem('pc27todo2')||'{}')}catch(e){}
+$('todo').innerHTML=todos.map((t,i)=>`<label><input type="checkbox" data-i="${i}" ${sv[i]?'checked':''}><span><span class="who">${t[0]}</span>${t[1]}</span></label>`).join('');
+$('todo').addEventListener('change',e=>{const i=e.target.dataset.i;if(i==null)return;sv[i]=e.target.checked;try{localStorage.setItem('pc27todo2',JSON.stringify(sv))}catch(err){}});
+
+/* ---------- CONTRATO ---------- */
+const P=[
+ {n:'Juan Carlos Fierro',c:'#0f8a90',r:'Encargado de la puntualidad',ic:'⏱'},
+ {n:'Silvana Alvis',c:'#ff6b4a',r:'Vlogs y contenido',ic:'▶',minor:true},
+ {n:'Daniela Alvis',c:'#7a5cff',r:'Contable y presupuesto',ic:'$'},
+ {n:'Laura Montañez',c:'#e0a400',r:'Entretenimiento y juegos sorpresa',ic:'★'},
+ {n:'Valentina Rodríguez',c:'#1f9d6b',r:'Verificar la comida de los snacks',ic:'✓'},
+ {n:'Kevin Góngora',c:'#2b6cb0',r:'Apoyo en todas las áreas y verificación del cumplimiento del itinerario',ic:'K'},
+ {n:'Gustavo Vergara',c:'#b0457a',r:'Apoyo en todas las áreas y verificación del cumplimiento del itinerario',ic:'G'},
+ {n:'Daniel Olivares',c:'#8a6a34',r:'Encargado del trago',ic:'🍹'}
+];
+P.forEach(p=>{p.ini=p.n.split(' ').map(w=>w[0]).slice(0,2).join('')});
+const MINOR='Para Silvana aplica con bebidas sin alcohol: es menor de edad.';
+const C=[
+ {h:'Actitud y convivencia',l:[
+  ['Prohibido quejarse.','Valentina'],
+  ['Prohibidos los regaños.','Grupo'],
+  ['La que pelee, pelea sola. Sin hacer mala cara. No salga de la habitación.','Valentina'],
+  ['Todas las decisiones son grupales. A quien no le guste, de malas.','Valentina'],
+  ['A Laura y Silvana, desde lejos, muy lejos.','Kevin']]},
+ {h:'Horarios',l:[
+  ['Dormir no está en el itinerario.','Valentina'],
+  ['Cumplir con el horario: si se dice a las 7, es a las 7, no a las 10.','Valentina']]},
+ {h:'Seguridad',l:[
+  ['No encerrar a la gente.','Valentina'],
+  ['No recostarse a dormir tomados, y menos en habitaciones que no son las propias.','Valentina',true],
+  ['No tirarse de lugares altos.','Valentina'],
+  ['Ni trepar paredes ni mandar a los otros a trepar.','Gustavo']]},
+ {h:'Parejas',l:[
+  ['No controlar al otro, y menos en estado de embriaguez.','Valentina'],
+  ['La única que sí se puede controlar es Silva.','Valentina']]},
+ {h:'Comida y trago',l:[
+  ['Si se dice que vamos a comer, es a comer.','Valentina'],
+  ['No saltarse las comidas.','Valentina'],
+  ['Pueden desayunar con trago, pero deben desayunar.','Valentina',true],
+  ['El que tenga hambre, que vaya y coma. La comida es 24/7.','Kevin'],
+  ['El trago también es 24/7.','Kevin',true],
+  ['Si se ponen bravitos y no quieren tomar, pues de malas.','Valentina',true]]},
+ {h:'Fotos',l:[
+  ['No tomar fotos feas.','Grupo'],
+  ['Todos deben aprobar las fotos antes de publicarlas.','Grupo']]},
+ {h:'Botiquín obligatorio',l:[
+  ['Llevar pastas para el dolor de cabeza y popito.','Valentina']]}
+];
+const CUMP=['Gustavo Vergara y Kevin Góngora verifican que se cumplan el itinerario y todas las condiciones de este contrato.','Juan Carlos Fierro controla la puntualidad: los horarios acordados se respetan.','Daniela Alvis lleva las cuentas y el presupuesto; los gastos del grupo se reportan a ella.','Cada integrante cumple su responsabilidad durante todo el viaje y apoya a los demás.','Al firmar, cada integrante acepta todas las condiciones y responsabilidades de este contrato.'];
+const KEY='pc27firmas';
+let signed={};try{signed=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+let cur=0;
+const tally=()=>{const k=Object.keys(signed).filter(x=>signed[x]).length;$('tallyT').textContent=`${k} de 8 firmaron`;$('tallyB').style.width=(k/8*100)+'%'};
+const people=()=>{$('people').innerHTML=P.map((p,i)=>`<button class="pp" aria-pressed="${i===cur}" data-i="${i}"><span class="av" style="background:${p.c}">${p.ini}</span>${p.n.split(' ')[0]}${p.minor?' (16)':''}${signed[p.n]?' <span class="ck">✓</span>':''}</button>`).join('')};
+const paper=()=>{
+ const p=P[cur];let n=0;
+ $('paper').innerHTML=`
+ <h2>Contrato de viaje · Punta Cana 2027</h2>
+ <div class="meta"><span>Fecha del contrato: 24 de noviembre de 2026</span><span>Viaje: 4 al 8 de abril de 2027</span><span>Bogotá → Punta Cana</span></div>
+ <p class="party">Yo, <b>${p.n}</b>${p.minor?' (menor de edad, 16 años)':''}, me comprometo con mis 7 compañeros de viaje a cumplir todas las condiciones de este contrato.</p>
+ <div class="role"><span class="ic" style="background:${p.c}">${p.ini}</span><div><div class="k">Mi responsabilidad</div><b>${p.r}</b></div></div>
+ <section class="cl"><h3>Responsabilidades de todo el grupo</h3><div class="roles">${P.map((q,i)=>`<div class="${i===cur?'me':''}"><b>${q.n}</b>${i===cur?' <span class="youb">Tú</span>':''}<br>${q.r}</div>`).join('')}</div></section>
+ <h3 style="font-size:20px;margin:6px 0 12px">Condiciones del viaje</h3>
+ ${C.map(s=>`<section class="cl"><h3>${s.h}</h3><ol start="${n+1}">${s.l.map(c=>{n++;return `<li>${c[0]}${c[2]&&p.minor?`<span class="minor">${MINOR}</span>`:''}</li>`}).join('')}</ol></section>`).join('')}
+ <section class="cl"><h3>Cumplimiento y verificación</h3><ol start="${n+1}">${CUMP.map(x=>{n++;return `<li>${x}</li>`}).join('')}</ol></section>
+ <div class="sign">
+  <label class="acc"><input type="checkbox" id="acc" ${signed[p.n]?'checked':''}> Leí y acepto las ${n} condiciones, mi responsabilidad y las del grupo.</label>
+  <div><div class="sig" id="sig">${signed[p.n]?p.n:''}</div><div class="k">Firma${signed[p.n]?' · '+signed[p.n]:''}</div></div>
+  <div class="btns"><button class="btn" id="copy">Copiar contrato</button><button class="btn alt" id="next">Siguiente persona</button></div>
+ </div>
+ <div class="stamp ${signed[p.n]?'on':''}" id="stamp">FIRMADO</div>`;
+ $('acc').onchange=e=>{if(e.target.checked){const d=new Date();signed[p.n]=d.toLocaleDateString('es-CO',{day:'numeric',month:'short',year:'numeric'})}else delete signed[p.n];
+  try{localStorage.setItem(KEY,JSON.stringify(signed))}catch(err){}people();paper();tally()};
+ $('next').onclick=()=>{cur=(cur+1)%P.length;people();paper();$('paper').scrollIntoView({behavior:'smooth',block:'start'})};
+ $('copy').onclick=async()=>{let k=0;const txt=`CONTRATO DE VIAJE · PUNTA CANA 2027\nFecha: 24 de noviembre de 2026 · Viaje: 4 al 8 de abril de 2027\n\nYo, ${p.n}, me comprometo a cumplir estas condiciones.\nMi responsabilidad: ${p.r}\n\nRESPONSABILIDADES DEL GRUPO\n`+P.map(q=>`• ${q.n}: ${q.r}`).join('\n')+'\n\n'+
+   C.map(s=>s.h.toUpperCase()+'\n'+s.l.map(c=>`${++k}. ${c[0]}${c[2]&&p.minor?' ('+MINOR+')':''}`).join('\n')).join('\n\n')+
+   '\n\nCUMPLIMIENTO Y VERIFICACIÓN\n'+CUMP.map(x=>`${++k}. ${x}`).join('\n')+(signed[p.n]?`\n\nFirmado: ${p.n} · ${signed[p.n]}`:'');
+  const b=$('copy');try{await navigator.clipboard.writeText(txt);b.textContent='¡Copiado!'}catch(e){b.textContent='No se pudo copiar'}setTimeout(()=>b.textContent='Copiar contrato',1800)};
+};
+$('people').addEventListener('click',e=>{const b=e.target.closest('.pp');if(!b)return;cur=+b.dataset.i;people();paper()});
+people();paper();tally();
+
+/* tabs */
+const show=v=>{['comparativo','contrato'].forEach(x=>{$(x).hidden=x!==v;$('t-'+x).setAttribute('aria-selected',x===v)});
+ if(v==='comparativo'&&started)grow();};
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{location.hash=t.dataset.v;show(t.dataset.v)});
+window.addEventListener('hashchange',()=>{const h=location.hash.slice(1);if(h==='contrato'||h==='comparativo')show(h)});
+if(location.hash==='#contrato')show('contrato');
+
+const io=('IntersectionObserver' in window)?new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{threshold:.12}):null;
+const reveal=()=>document.querySelectorAll('.rv').forEach(el=>io?io.observe(el):el.classList.add('in'));
+if(innerHeight>innerWidth*1.1){$('map').setAttribute('viewBox','230 30 290 520');$('pan').setAttribute('to','375 250')}
+const intro=$('intro');let closed=false;
+const finish=()=>{if(closed)return;closed=true;intro.classList.add('done');reveal();setTimeout(grow,350)};
+$('skip').onclick=finish;
+const reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+setTimeout(finish,reduce?0:5400);
+if(!reduce){const t0=performance.now();const ease=x=>x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2;
+ const tick=now=>{const x=Math.min(1,Math.max(0,(now-t0-700)/3000)),e=ease(x);$('hKm').textContent=Math.round(1660*e).toLocaleString('es-CO')+' km';const m=Math.round(170*e);$('hT').textContent=Math.floor(m/60)+'h '+String(m%60).padStart(2,'0')+'m';if(x<1&&!closed)requestAnimationFrame(tick)};requestAnimationFrame(tick)}
+}
+</script>
+</body>
+</html>
