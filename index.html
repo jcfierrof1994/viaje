@@ -85,8 +85,8 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid 
 .seg button[aria-pressed=true]{background:var(--sea);color:#fff}
 .row{display:grid;grid-template-columns:30px minmax(0,1fr);gap:4px 10px;padding:10px 0;border-top:1px solid var(--line)}
 .row .pos{font:800 20px Sora;color:var(--tq);grid-row:span 2;align-self:center}
-.row .top{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
-.row .nm{font-weight:600;font-size:15px}.row .vl{font:700 17px Sora;white-space:nowrap}
+.row .top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:baseline}
+.row .nm{font-weight:600;font-size:14px}.row .vl{font:700 15px Sora;white-space:nowrap}
 .track{height:12px;background:var(--line);border-radius:99px;overflow:hidden}
 .fill{height:100%;width:0;border-radius:99px;transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
 
@@ -117,7 +117,7 @@ ul.l{margin:0;padding-left:18px;font-size:15px}ul.l li{margin:3px 0}
 
 .scroll{overflow-x:auto;border-radius:16px;border:1px solid var(--line)}
 table{border-collapse:collapse;background:var(--card);font-size:14px;width:100%}
-#mx{min-width:980px}
+#mx{min-width:1600px}
 th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
 thead th{font-family:Sora;font-size:13px;background:light-dark(#e8f6f7,#0e3442)}
 tbody th{position:sticky;left:0;background:var(--card);font-weight:600;width:120px;box-shadow:1px 0 0 var(--line)}
@@ -229,7 +229,7 @@ input[type=number],select{font:16px Inter;padding:10px;border-radius:10px;border
   <div class="sun"></div>
   <div class="wrap" style="position:relative">
     <h1>Punta Cana 2027</h1>
-    <p>5 opciones que aceptan a Silvana. La más barata es Sol Caribe, pero solo trae desayuno; en todo incluido gana Nextfly y en hotel, el Riu Palace.</p>
+    <p>9 opciones que aceptan a Silvana. La más barata es Sol Caribe (solo desayuno); en todo incluido gana Nextfly. Las 4 de la agencia de Kevin son del 2 al 6 de abril.</p>
     <div class="pass">
       <div><div class="ap">BOG</div><div class="apn">Bogotá</div></div>
       <div class="mid"><svg viewBox="-20 -16 40 32"><path d="M18 0c0-2-2-3-5-3H4L-6-14h-5l5 11h-9l-4-5h-4l2 8-2 8h4l4-5h9l-5 11h5L4 3h9c3 0 5-1 5-3z" fill="#fff"/></svg></div>
@@ -331,7 +331,23 @@ const O=[
  {n:'Wakanda · Impressive Punta Cana',s:'Agencia · paquete con Wingo',c:'#6b3fa0',t:3450000*N,fl:[['Ida','9:10 am → 12:55 pm','BOG→PUJ · Wingo directo 2h 45m'],['Regreso','3:08 pm → 4:50 pm','PUJ→BOG · Wingo directo 2h 42m']],rib:'Incluye seguro de viaje',
   tags:[['ok','Todo incluido'],['ok','Seguro de asistencia'],['ok','Mejores horarios'],['','4★']],
   pro:['Todo incluido: comidas, bebidas, snacks y entretenimiento','Traslados aeropuerto–hotel–aeropuerto','Única opción con seguro de asistencia en viaje','Frente a la playa El Cortecito, Bávaro, a ~20 km del aeropuerto; tiene club infantil','Vuelos Wingo directos: llegan al mediodía y regresan en la tarde'],
-  con:['$751.000 más por persona que Nextfly','Tarifa Wingo P5-BASIC: solo artículo personal, maletas aparte','Tarifa y disponibilidad sujetas a cambio']}
+  con:['$751.000 más por persona que Nextfly','Tarifa Wingo P5-BASIC: solo artículo personal, maletas aparte','Tarifa y disponibilidad sujetas a cambio']},
+ {n:'Agencia Kevin · Occidental Caribe',s:'Agencia · 2–6 abr · 4 habitaciones',c:'#2b6cb0',t:3220000*N,fl:null,k:1,rib:'Más barata de la agencia de Kevin',
+  tags:[['ok','Todo incluido'],['ok','Asistencia médica'],['warn','Otras fechas'],['','4★']],
+  pro:['$3.220.000 por adulto con vuelos, todo incluido y asistencia médica','Frente a Playa Arena Gorda; club infantil y pequeño parque acuático','Mucho ambiente: teatro y discoteca'],
+  con:['Ambiente fiestero y habitaciones algo antiguas, según reseñas','Fechas distintas: 2 al 6 de abril (vie–mar)','No dice aerolínea ni horarios','Traslado dice solo «In» compartido: confirmar el regreso al aeropuerto']},
+ {n:'Agencia Kevin · Impressive Punta Cana',s:'Agencia · 2–6 abr · 4 habitaciones',c:'#805ad5',t:3376000*N,fl:null,k:1,
+  tags:[['ok','Todo incluido'],['ok','Asistencia médica'],['warn','Otras fechas'],['','4★']],
+  pro:['El mismo hotel de Wakanda, $74.000 más barato por persona','Frente a la playa El Cortecito, a ~20 km del aeropuerto','Asistencia médica incluida'],
+  con:['Wakanda sí tiene vuelos Wingo confirmados con buenos horarios','Fechas distintas: 2 al 6 de abril (vie–mar)','No dice aerolínea ni horarios','Traslado dice solo «In» compartido: confirmar el regreso al aeropuerto']},
+ {n:'Agencia Kevin · Grand Sirenis Aquagames',s:'Agencia · 2–6 abr · 4 habitaciones',c:'#0f9d8a',t:3476900*N,fl:null,k:1,
+  tags:[['ok','Parque acuático 12.000 m²'],['ok','Asistencia médica'],['warn','Otras fechas'],['warn','Lejos: ~43 km']],
+  pro:['Parque acuático Aquagames dentro del resort: el mejor para Silvana y el grupo','Todo incluido, frente a la playa','Asistencia médica incluida'],
+  con:['En Uvero Alto, a ~43 km del aeropuerto (unos 45–60 min)','Lejos de la zona de Bávaro para salir','Fechas distintas: 2 al 6 de abril (vie–mar)','No dice aerolínea ni horarios','Traslado dice solo «In» compartido: confirmar el regreso al aeropuerto']},
+ {n:'Agencia Kevin · Riu Bambu',s:'Agencia · 2–6 abr · 4 habitaciones',c:'#c05621',t:3590900*N,fl:null,k:1,
+  tags:[['ok','Todo incluido 24h'],['ok','Asistencia médica'],['warn','Otras fechas'],['','5★ RIU']],
+  pro:['RIU 5★ para familias en Playa Arena Gorda, junto al Riu Palace','Splash Water World y club de adolescentes RIU4U','Cuesta casi lo mismo que Riu Palace + Wingo, pero con asistencia médica'],
+  con:['La más cara de la agencia de Kevin','Fechas distintas: 2 al 6 de abril (vie–mar)','No dice aerolínea ni horarios','Traslado dice solo «In» compartido: confirmar el regreso al aeropuerto']}
 ];
 O.forEach((o,i)=>o.i=i+1);
 const max=Math.max(...O.map(o=>o.t));
@@ -361,23 +377,28 @@ const dn=['Dom 4','Lun 5','Mar 6','Mié 7','Jue 8'];
 const T=[['Vuelos Arajet (opción 2)',[0,19.5,4,7.5],'Llegada al hotel ~7:30 pm; salida ~7:30 am el último día','~3 días y medio'],
  ['Vuelos Wingo (opciones 3 y 5)',[0,14,4,12],'Llegada al hotel ~2 pm; disfrutan hasta el check-out del jueves','~4 días'],
  ['Wingo · Sol Caribe (opción 4)',[0,14,4,11],'Llegada ~2 pm; el regreso a la 1:48 pm obliga a salir del hotel ~11 am','~3 días y 21 h'],
- ['Nextfly (opción 1)',null,'Pedir aerolínea y horarios antes de pagar la reserva','Por confirmar']];
+ ['Nextfly (opción 1)',null,'Pedir horarios antes de pagar la reserva','Por confirmar'],
+ ['Agencia de Kevin (opciones 6 a 9) · 2 al 6 abr',null,'Vie 2 a mar 6 de abril; horarios por confirmar','Por confirmar']];
 $('tl').innerHTML=T.map(([n,r,txt,h])=>`<div class="tl rv"><div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap"><h3>${n}</h3><span class="hrs">${h}</span></div><div class="sub">${txt}</div>
  <div class="days">${dn.map((_,d)=>{if(!r)return'<div class="day"></div>';const s=d<r[0]?24:d===r[0]?r[1]:0,e=d>r[2]?0:d===r[2]?r[3]:24,w=Math.max(0,e-s);
  return `<div class="day">${w?`<i style="left:${s/24*100}%;width:${w/24*100}%;transition-delay:${d*.12}s"></i>`:''}</div>`}).join('')}</div>
  <div class="dl">${dn.map(d=>`<span>${d}</span>`).join('')}</div></div>`).join('');
 
 const M=[['Precio total',...O.map(o=>`<b>${fmt(o.t)}</b>`)],['Por persona',...O.map(o=>fmt(o.t/N))],
- ['Compra','Agencia Nextfly','Directa','Directa','Paquete en línea','Agencia Wakanda'],['Hotel','Sunscape Coco 4★','Riu Palace 5★','Riu Palace 5★','Caribbean Dreams at Sol Caribe 4★','Impressive Punta Cana 4★'],
- ['Plan','Todo incluido buffet + bebidas','Todo incluido 24h','Todo incluido 24h','<b>Solo desayuno</b>','Todo incluido: comidas, bebidas, snacks, actividades'],
- ['Para Silvana','Club juvenil','Club adolescentes RIU4U, parque acuático','Club adolescentes RIU4U, parque acuático','Piscina del complejo','Club infantil, piscinas, actividades'],
- ['Zona','Cabeza de Toro, ~10–15 km','Arena Gorda, ~25 km','Arena Gorda, ~25 km','Los Corales, Bávaro, ~30 min','El Cortecito, Bávaro, ~20 km, frente al mar'],
- ['Vuelo ida','Por confirmar','Arajet 2:15 pm → 6:07 pm','Wingo 9:10 am → 12:55 pm','Wingo 9:10 am → 12:55 pm','Wingo 9:10 am → 12:55 pm'],
- ['Vuelo regreso','Por confirmar','Arajet 10:40 am → 12:30 pm','Wingo 3:08 pm → 4:50 pm','Wingo 1:48 pm → 3:30 pm','Wingo 3:08 pm → 4:50 pm'],
- ['Equipaje','Morral 10 kg','Revisar tarifa','Revisar tarifa','Solo artículo personal','Solo artículo personal (Wingo P5-BASIC)'],['Traslados','Incluidos','Incluidos (RIU)','Incluidos (RIU)','No indicados','Incluidos'],
- ['Seguro de viaje','No','No','No','No','<b>Sí, asistencia en viaje</b>'],
- ['Cancelación','Por confirmar','Por confirmar','Por confirmar','Reembolsable','Sujeta a cambios'],
- ['Pago','Reserva $1.200.000 + cuotas','Pago al reservar','Pago al reservar','Pago al reservar','Por confirmar']];
+ ['Fechas','4–8 abr','4–8 abr','4–8 abr','4–8 abr','4–8 abr','<b>2–6 abr</b>','<b>2–6 abr</b>','<b>2–6 abr</b>','<b>2–6 abr</b>'],
+ ['Compra','Agencia Nextfly','Directa','Directa','Paquete en línea','Agencia Wakanda','Agencia de Kevin','Agencia de Kevin','Agencia de Kevin','Agencia de Kevin'],
+ ['Hotel','Sunscape Coco 4★','Riu Palace 5★','Riu Palace 5★','Caribbean Dreams at Sol Caribe 4★','Impressive Punta Cana 4★','Occidental Caribe 4★','Impressive Punta Cana 4★','Grand Sirenis Aquagames','Riu Bambu 5★'],
+ ['Plan','Todo incluido buffet + bebidas','Todo incluido 24h','Todo incluido 24h','<b>Solo desayuno</b>','Todo incluido: comidas, bebidas, snacks, actividades','Todo incluido: comidas, snacks y bebidas','Todo incluido: comidas, snacks y bebidas','Todo incluido: comidas, snacks y bebidas','Todo incluido: comidas, snacks y bebidas'],
+ ['Para Silvana','Club juvenil','Club adolescentes RIU4U, parque acuático','Club adolescentes RIU4U, parque acuático','Piscina del complejo','Club infantil, piscinas, actividades','Club infantil, mini parque acuático','Club infantil, piscinas','<b>Parque acuático de 12.000 m²</b>','Splash Water World, club RIU4U'],
+ ['Zona','Cabeza de Toro, ~10–15 km','Arena Gorda, ~25 km','Arena Gorda, ~25 km','Los Corales, Bávaro, ~30 min','El Cortecito, Bávaro, ~20 km, frente al mar','Arena Gorda, ~28 km','El Cortecito, Bávaro, ~20 km','Uvero Alto, ~43 km','Arena Gorda, ~30 km'],
+ ['Vuelo ida','Por confirmar','Arajet 2:15 pm → 6:07 pm','Wingo 9:10 am → 12:55 pm','Wingo 9:10 am → 12:55 pm','Wingo 9:10 am → 12:55 pm','Por confirmar','Por confirmar','Por confirmar','Por confirmar'],
+ ['Vuelo regreso','Por confirmar','Arajet 10:40 am → 12:30 pm','Wingo 3:08 pm → 4:50 pm','Wingo 1:48 pm → 3:30 pm','Wingo 3:08 pm → 4:50 pm','Por confirmar','Por confirmar','Por confirmar','Por confirmar'],
+ ['Equipaje','Morral 10 kg','Revisar tarifa','Revisar tarifa','Solo artículo personal','Solo artículo personal (Wingo P5-BASIC)','No indicado','No indicado','No indicado','No indicado'],
+ ['Traslados','Incluidos','Incluidos (RIU)','Incluidos (RIU)','No indicados','Incluidos','Llegada compartida; confirmar regreso','Llegada compartida; confirmar regreso','Llegada compartida; confirmar regreso','Llegada compartida; confirmar regreso'],
+ ['Seguro de viaje','No','No','No','No','<b>Sí, asistencia en viaje</b>','<b>Sí, asistencia médica</b>','<b>Sí, asistencia médica</b>','<b>Sí, asistencia médica</b>','<b>Sí, asistencia médica</b>'],
+ ['Habitaciones','Dobles','Por confirmar','Por confirmar','Cotizado para 2','Por confirmar','4 estándar','4 estándar','4 estándar','4 estándar'],
+ ['Cancelación','Por confirmar','Por confirmar','Por confirmar','Reembolsable','Sujeta a cambios','Sujeta a cambios','Sujeta a cambios','Sujeta a cambios','Sujeta a cambios'],
+ ['Pago','Reserva $1.200.000 + cuotas','Pago al reservar','Pago al reservar','Pago al reservar','Por confirmar','Incluye fee bancario','Incluye fee bancario','Incluye fee bancario','Incluye fee bancario']];
 $('mx').innerHTML=`<thead><tr><th>Criterio</th>${O.map(o=>`<th>${o.i}. ${o.n}</th>`).join('')}</tr></thead><tbody>${M.map(r=>`<tr><th>${r[0]}</th>${r.slice(1).map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody>`;
 
 const calc=()=>{const bag=(+$('cB').value||0)*Math.min(N,+$('cBn').value||0),food=(+$('cF').value||0)*N*4;
@@ -390,6 +411,7 @@ const todos=[['Nextfly','¿Qué aerolínea y qué horarios tienen los vuelos?'],
  ['Vuelos','Revisar qué equipaje incluyen Arajet ($1.007.868) y Wingo ($1.453.051)'],['Vuelos','Comparar un día antes o después: puede bajar el precio'],
  ['Sol Caribe','¿El precio de $2.439.646 se mantiene para 8 personas? ¿Cuántas habitaciones o apartamentos son?'],['Sol Caribe','¿Incluye traslados? ¿Qué tan lejos queda de la playa?'],['Sol Caribe','Estimar cuánto costarían almuerzos, cenas y trago por persona al día'],
  ['Wakanda','¿El precio es igual para Silvana? ¿Cuánto cuesta subir de P5-BASIC a una tarifa con maleta?'],['Wakanda','¿Qué cubre el seguro? ¿Cómo es el pago (reserva y cuotas)? Pedir número de RNT'],
+ ['Agencia Kevin','¿Nombre de la agencia, RNT, aerolínea y horarios? ¿Se pueden mover las fechas al 4–8 de abril?'],['Agencia Kevin','¿El traslado incluye el regreso hotel–aeropuerto? ¿Qué equipaje trae?'],['Agencia Kevin','¿La tarifa por adulto aplica igual a Silvana? ¿Cómo se pagan y cuánto es la reserva?'],
  ['Todos','Pasaportes vigentes y permiso de salida de Silvana si no viaja con ambos padres']];
 let sv={};try{sv=JSON.parse(localStorage.getItem('pc27todo2')||'{}')}catch(e){}
 $('todo').innerHTML=todos.map((t,i)=>`<label><input type="checkbox" data-i="${i}" ${sv[i]?'checked':''}><span><span class="who">${t[0]}</span>${t[1]}</span></label>`).join('');
