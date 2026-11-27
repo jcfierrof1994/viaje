@@ -117,7 +117,7 @@ ul.l{margin:0;padding-left:18px;font-size:15px}ul.l li{margin:3px 0}
 
 .scroll{overflow-x:auto;border-radius:16px;border:1px solid var(--line)}
 table{border-collapse:collapse;background:var(--card);font-size:14px;width:100%}
-#mx{min-width:2100px}
+#mx{min-width:2800px}
 th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
 thead th{font-family:Sora;font-size:13px;background:light-dark(#e8f6f7,#0e3442)}
 tbody th{position:sticky;left:0;background:var(--card);font-weight:600;width:120px;box-shadow:1px 0 0 var(--line)}
@@ -229,7 +229,7 @@ input[type=number],select{font:16px Inter;padding:10px;border-radius:10px;border
   <div class="sun"></div>
   <div class="wrap" style="position:relative">
     <h1>Punta Cana 2027</h1>
-    <p>12 opciones que aceptan a Silvana. La más barata es Sol Caribe (solo desayuno); en todo incluido gana Nextfly. Ojo: varias agencias cotizaron otras fechas.</p>
+    <p>16 opciones que aceptan a Silvana. La más barata es Sol Caribe (solo desayuno); en todo incluido gana Nextfly, y con seguro y traslados, Macura · Whala. Ojo: varias agencias cotizaron otras fechas.</p>
     <div class="pass">
       <div><div class="ap">BOG</div><div class="apn">Bogotá</div></div>
       <div class="mid"><svg viewBox="-20 -16 40 32"><path d="M18 0c0-2-2-3-5-3H4L-6-14h-5l5 11h-9l-4-5h-4l2 8-2 8h4l4-5h9l-5 11h5L4 3h9c3 0 5-1 5-3z" fill="#fff"/></svg></div>
@@ -359,7 +359,23 @@ const O=[
  {n:'Vision Tours · Bahia Principe Explore + Wingo',s:'Agencia · 4–8 abr · 4 junior suites',c:'#9b2c2c',t:27465580,fl:[["Ida", "9:10 am → 12:55 pm", "BOG→PUJ · Wingo 7026 directo"], ["Regreso", "3:08 pm → 4:50 pm", "PUJ→BOG · Wingo 7027 directo"]],
   tags:[['ok','Todo incluido'],['ok','Traslados incluidos'],['ok','Mejores horarios'],['ok','Club teens 13–17']],
   pro:['Resort familiar en Arena Gorda–Macao, a ~25 km del aeropuerto','Club para adolescentes y parque acuático infantil','Vuelos Wingo confirmados y traslado compartido incluido ($228.020)','Junior suites'],
-  con:['Las 4 junior suites son con cama king: 2 personas por cama','Un solo pago','Equipaje no indicado']}
+  con:['Las 4 junior suites son con cama king: 2 personas por cama','Un solo pago','Equipaje no indicado']},
+ {n:'Macura · Whala Bávaro',s:'Mayorista Macura · RNT 234963',c:'#e07a5f',t:24320000,m:1,rib:'Más barata con seguro y traslados',fl:[["Ida", "9:05 am → 12:52 pm", "BOG→PUJ · Wingo directo"], ["Regreso", "1:42 pm → 3:27 pm", "PUJ→BOG · Wingo directo"]],
+  tags:[['ok','Todo incluido'],['ok','Seguro y traslados'],['warn','3,5★']],
+  pro:['La más barata con todo incluido, seguro y traslados','Adulto $3.090.000 · Silvana $2.690.000','Asistencia al viajero, traslados y morral de 10 kg','Reserva con $1.500.000 por persona y abonos mensuales'],
+  con:['Hotel sencillo de 3,5★','Solo dice «abril 2027»: confirmar que sea del 4 al 8','No incluye maleta ni asientos juntos','Tiquetes y hotel no reembolsables; tarjeta de crédito +5%']},
+ {n:'Macura · Occidental Punta Cana',s:'Mayorista Macura · RNT 234963',c:'#3d5a80',t:26400000,m:1,fl:[["Ida", "9:05 am → 12:52 pm", "BOG→PUJ · Wingo directo"], ["Regreso", "1:42 pm → 3:27 pm", "PUJ→BOG · Wingo directo"]],
+  tags:[['ok','Todo incluido'],['ok','Seguro y traslados'],['','Frente a Arena Gorda']],
+  pro:['Frente a playa Arena Gorda, Bávaro; habitaciones con balcón o terraza','Adulto $3.350.000 · Silvana $2.950.000','Asistencia al viajero, traslados y morral de 10 kg','Reserva con $1.500.000 por persona y abonos mensuales'],
+  con:['Solo dice «abril 2027»: confirmar que sea del 4 al 8','No incluye maleta ni asientos juntos','Tiquetes y hotel no reembolsables; tarjeta de crédito +5%']},
+ {n:'Macura · Ocean El Faro',s:'Mayorista Macura · RNT 234963',c:'#2a9d8f',t:27520000,m:1,fl:[["Ida", "9:05 am → 12:52 pm", "BOG→PUJ · Wingo directo"], ["Regreso", "1:42 pm → 3:27 pm", "PUJ→BOG · Wingo directo"]],
+  tags:[['ok','Todo incluido'],['ok','Parque acuático y río lento'],['ok','Seguro y traslados']],
+  pro:['Parque acuático, río lento y 4 piscinas: muy bueno para Silvana','10 restaurantes; suites con hidromasaje','Adulto $3.490.000 · Silvana $3.090.000','Asistencia al viajero, traslados y morral de 10 kg','Reserva con $1.500.000 por persona y abonos mensuales'],
+  con:['Solo dice «abril 2027»: confirmar que sea del 4 al 8','No incluye maleta ni asientos juntos','Tiquetes y hotel no reembolsables; tarjeta de crédito +5%']},
+ {n:'Macura · Grand Bávaro Princess',s:'Mayorista Macura · RNT 234963',c:'#8d5a97',t:29120000,m:1,fl:[["Ida", "9:05 am → 12:52 pm", "BOG→PUJ · Wingo directo"], ["Regreso", "1:42 pm → 3:27 pm", "PUJ→BOG · Wingo directo"]],
+  tags:[['ok','Todo incluido'],['ok','Seguro y traslados'],['','10 restaurantes']],
+  pro:['10 restaurantes, spa, discoteca y actividades diarias','Adulto $3.690.000 · Silvana $3.290.000','Asistencia al viajero, traslados y morral de 10 kg','Reserva con $1.500.000 por persona y abonos mensuales'],
+  con:['La más cara de Macura y del comparativo','Solo dice «abril 2027»: confirmar que sea del 4 al 8','No incluye maleta ni asientos juntos','Tiquetes y hotel no reembolsables; tarjeta de crédito +5%']}
 ];
 O.forEach((o,i)=>o.i=i+1);
 const max=Math.max(...O.map(o=>o.t));
@@ -388,7 +404,7 @@ $('cards').innerHTML=O.map(o=>`<article class="card rv ${o.t===best?'best':''}">
 const dn=['Dom 4','Lun 5','Mar 6','Mié 7','Jue 8'];
 const T=[['Vuelos Arajet (opción 2)',[0,19.5,4,7.5],'Llegada al hotel ~7:30 pm; salida ~7:30 am el último día','~3 días y medio'],
  ['Vuelos Wingo 3:08 pm (opciones 3, 5, 11 y 12)',[0,14,4,12],'Llegada al hotel ~2 pm; disfrutan hasta el check-out del jueves','~4 días'],
- ['Regreso 1:48 pm (opciones 4 y 10)',[0,14,4,11],'Llegada ~2 pm; el regreso a la 1:48 pm obliga a salir del hotel ~11 am','~3 días y 21 h'],
+ ['Regreso ~1:45 pm (Sol Caribe, Volados y Macura)',[0,14,4,11],'Llegada ~2 pm; el regreso a la 1:48 pm obliga a salir del hotel ~11 am','~3 días y 21 h'],
  ['Nextfly (opción 1)',null,'Pedir horarios antes de pagar la reserva','Por confirmar'],
  ['Agencia de Kevin (opciones 6 a 9) · 2 al 6 abr',null,'Vie 2 a mar 6 de abril; horarios por confirmar','Por confirmar']];
 $('tl').innerHTML=T.map(([n,r,txt,h])=>`<div class="tl rv"><div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap"><h3>${n}</h3><span class="hrs">${h}</span></div><div class="sub">${txt}</div>
@@ -397,20 +413,20 @@ $('tl').innerHTML=T.map(([n,r,txt,h])=>`<div class="tl rv"><div style="display:f
  <div class="dl">${dn.map(d=>`<span>${d}</span>`).join('')}</div></div>`).join('');
 
 const M=[['Precio total',...O.map(o=>`<b>${fmt(o.t)}</b>`)],['Por persona',...O.map(o=>fmt(o.t/N))],
- ['Fechas','4–8 abr','4–8 abr','4–8 abr','4–8 abr','4–8 abr','<b>2–6 abr</b>','<b>2–6 abr</b>','<b>2–6 abr</b>','<b>2–6 abr</b>','<b>3–7 abr</b>','4–8 abr','4–8 abr'],
- ['Compra','Agencia Nextfly','Directa','Directa','Paquete en línea','Agencia Wakanda','Agencia de Kevin','Agencia de Kevin','Agencia de Kevin','Agencia de Kevin','Agencia Volados','Vision Tours','Vision Tours'],
- ['Hotel','Sunscape Coco 4★','Riu Palace 5★','Riu Palace 5★','Caribbean Dreams at Sol Caribe 4★','Impressive Punta Cana 4★','Occidental Caribe 4★','Impressive Punta Cana 4★','Grand Sirenis Aquagames','Riu Bambu 5★','Occidental (por confirmar cuál)','Sunscape Coco 4★','Bahia Principe Explore Punta Cana'],
- ['Plan','Todo incluido buffet + bebidas','Todo incluido 24h','Todo incluido 24h','<b>Solo desayuno</b>','Todo incluido: comidas, bebidas, snacks, actividades','Todo incluido: comidas, snacks y bebidas','Todo incluido: comidas, snacks y bebidas','Todo incluido: comidas, snacks y bebidas','Todo incluido: comidas, snacks y bebidas','Todo incluido con bebidas, shows y actividades','Todo incluido','Todo incluido'],
- ['Para Silvana','Club juvenil','Club adolescentes RIU4U, parque acuático','Club adolescentes RIU4U, parque acuático','Piscina del complejo','Club infantil, piscinas, actividades','Club infantil, mini parque acuático','Club infantil, piscinas','<b>Parque acuático de 12.000 m²</b>','Splash Water World, club RIU4U','Por confirmar según el hotel','Club juvenil','Club teens 13–17, parque acuático infantil'],
- ['Zona','Cabeza de Toro, ~10–15 km','Arena Gorda, ~25 km','Arena Gorda, ~25 km','Los Corales, Bávaro, ~30 min','El Cortecito, Bávaro, ~20 km, frente al mar','Arena Gorda, ~28 km','El Cortecito, Bávaro, ~20 km','Uvero Alto, ~43 km','Arena Gorda, ~30 km','Por confirmar','Cabeza de Toro, ~10–15 km','Arena Gorda–Macao, ~25 km'],
- ['Vuelo ida','Por confirmar','Arajet 2:15 pm → 6:07 pm','Wingo 9:10 am → 12:55 pm','Wingo 9:10 am → 12:55 pm','Wingo 9:10 am → 12:55 pm','Por confirmar','Por confirmar','Por confirmar','Por confirmar','9:10 am, directo','Wingo 9:10 am → 12:55 pm','Wingo 9:10 am → 12:55 pm'],
- ['Vuelo regreso','Por confirmar','Arajet 10:40 am → 12:30 pm','Wingo 3:08 pm → 4:50 pm','Wingo 1:48 pm → 3:30 pm','Wingo 3:08 pm → 4:50 pm','Por confirmar','Por confirmar','Por confirmar','Por confirmar','1:48 pm, directo','Wingo 3:08 pm → 4:50 pm','Wingo 3:08 pm → 4:50 pm'],
- ['Equipaje','Morral 10 kg','Revisar tarifa','Revisar tarifa','Solo artículo personal','Solo artículo personal (Wingo P5-BASIC)','No indicado','No indicado','No indicado','No indicado','Morral 10 kg sin ruedas','No indicado','No indicado'],
- ['Traslados','Incluidos','Incluidos (RIU)','Incluidos (RIU)','No indicados','Incluidos','Llegada compartida; confirmar regreso','Llegada compartida; confirmar regreso','Llegada compartida; confirmar regreso','Llegada compartida; confirmar regreso','No mencionados','No incluidos','<b>Incluidos (compartido)</b>'],
- ['Seguro de viaje','No','No','No','No','<b>Sí, asistencia en viaje</b>','<b>Sí, asistencia médica</b>','<b>Sí, asistencia médica</b>','<b>Sí, asistencia médica</b>','<b>Sí, asistencia médica</b>','No','No','No'],
- ['Habitaciones','Dobles','Por confirmar','Por confirmar','Cotizado para 2','Por confirmar','4 estándar','4 estándar','4 estándar','4 estándar','<b>3 para 8 personas</b>','4 Superior Deluxe vista piscina','4 Junior suite king'],
- ['Cancelación','Por confirmar','Por confirmar','Por confirmar','Reembolsable','Sujeta a cambios','Sujeta a cambios','Sujeta a cambios','Sujeta a cambios','Sujeta a cambios','Precio puede variar','Sujeta a disponibilidad','Sujeta a disponibilidad'],
- ['Pago','Reserva $1.200.000 + cuotas','Pago al reservar','Pago al reservar','Pago al reservar','Por confirmar','Incluye fee bancario','Incluye fee bancario','Incluye fee bancario','Incluye fee bancario','Por confirmar','Un solo pago','Un solo pago']];
+ ['Fechas','4–8 abr','4–8 abr','4–8 abr','4–8 abr','4–8 abr','<b>2–6 abr</b>','<b>2–6 abr</b>','<b>2–6 abr</b>','<b>2–6 abr</b>','<b>3–7 abr</b>','4–8 abr','4–8 abr','Abril 2027 (confirmar)','Abril 2027 (confirmar)','Abril 2027 (confirmar)','Abril 2027 (confirmar)'],
+ ['Compra','Agencia Nextfly','Directa','Directa','Paquete en línea','Agencia Wakanda','Agencia de Kevin','Agencia de Kevin','Agencia de Kevin','Agencia de Kevin','Agencia Volados','Vision Tours','Vision Tours','Macura (mayorista)','Macura (mayorista)','Macura (mayorista)','Macura (mayorista)'],
+ ['Hotel','Sunscape Coco 4★','Riu Palace 5★','Riu Palace 5★','Caribbean Dreams at Sol Caribe 4★','Impressive Punta Cana 4★','Occidental Caribe 4★','Impressive Punta Cana 4★','Grand Sirenis Aquagames','Riu Bambu 5★','Occidental (por confirmar cuál)','Sunscape Coco 4★','Bahia Principe Explore Punta Cana','Whala Bávaro 3,5★','Occidental Punta Cana','Ocean El Faro','Grand Bávaro Princess'],
+ ['Plan','Todo incluido buffet + bebidas','Todo incluido 24h','Todo incluido 24h','<b>Solo desayuno</b>','Todo incluido: comidas, bebidas, snacks, actividades','Todo incluido: comidas, snacks y bebidas','Todo incluido: comidas, snacks y bebidas','Todo incluido: comidas, snacks y bebidas','Todo incluido: comidas, snacks y bebidas','Todo incluido con bebidas, shows y actividades','Todo incluido','Todo incluido','Todo incluido','Todo incluido','Todo incluido','Todo incluido'],
+ ['Para Silvana','Club juvenil','Club adolescentes RIU4U, parque acuático','Club adolescentes RIU4U, parque acuático','Piscina del complejo','Club infantil, piscinas, actividades','Club infantil, mini parque acuático','Club infantil, piscinas','<b>Parque acuático de 12.000 m²</b>','Splash Water World, club RIU4U','Por confirmar según el hotel','Club juvenil','Club teens 13–17, parque acuático infantil','Club infantil; precio menor $2.690.000','Precio menor $2.950.000','<b>Parque acuático y río lento</b>; menor $3.090.000','Piscinas y actividades; menor $3.290.000'],
+ ['Zona','Cabeza de Toro, ~10–15 km','Arena Gorda, ~25 km','Arena Gorda, ~25 km','Los Corales, Bávaro, ~30 min','El Cortecito, Bávaro, ~20 km, frente al mar','Arena Gorda, ~28 km','El Cortecito, Bávaro, ~20 km','Uvero Alto, ~43 km','Arena Gorda, ~30 km','Por confirmar','Cabeza de Toro, ~10–15 km','Arena Gorda–Macao, ~25 km','Bávaro','Arena Gorda, Bávaro','Punta Cana (confirmar zona)','Bávaro'],
+ ['Vuelo ida','Por confirmar','Arajet 2:15 pm → 6:07 pm','Wingo 9:10 am → 12:55 pm','Wingo 9:10 am → 12:55 pm','Wingo 9:10 am → 12:55 pm','Por confirmar','Por confirmar','Por confirmar','Por confirmar','9:10 am, directo','Wingo 9:10 am → 12:55 pm','Wingo 9:10 am → 12:55 pm','Wingo 9:05 am → 12:52 pm','Wingo 9:05 am → 12:52 pm','Wingo 9:05 am → 12:52 pm','Wingo 9:05 am → 12:52 pm'],
+ ['Vuelo regreso','Por confirmar','Arajet 10:40 am → 12:30 pm','Wingo 3:08 pm → 4:50 pm','Wingo 1:48 pm → 3:30 pm','Wingo 3:08 pm → 4:50 pm','Por confirmar','Por confirmar','Por confirmar','Por confirmar','1:48 pm, directo','Wingo 3:08 pm → 4:50 pm','Wingo 3:08 pm → 4:50 pm','Wingo 1:42 pm → 3:27 pm','Wingo 1:42 pm → 3:27 pm','Wingo 1:42 pm → 3:27 pm','Wingo 1:42 pm → 3:27 pm'],
+ ['Equipaje','Morral 10 kg','Revisar tarifa','Revisar tarifa','Solo artículo personal','Solo artículo personal (Wingo P5-BASIC)','No indicado','No indicado','No indicado','No indicado','Morral 10 kg sin ruedas','No indicado','No indicado','Morral 10 kg (40×35×25)','Morral 10 kg (40×35×25)','Morral 10 kg (40×35×25)','Morral 10 kg (40×35×25)'],
+ ['Traslados','Incluidos','Incluidos (RIU)','Incluidos (RIU)','No indicados','Incluidos','Llegada compartida; confirmar regreso','Llegada compartida; confirmar regreso','Llegada compartida; confirmar regreso','Llegada compartida; confirmar regreso','No mencionados','No incluidos','<b>Incluidos (compartido)</b>','Incluidos','Incluidos','Incluidos','Incluidos'],
+ ['Seguro de viaje','No','No','No','No','<b>Sí, asistencia en viaje</b>','<b>Sí, asistencia médica</b>','<b>Sí, asistencia médica</b>','<b>Sí, asistencia médica</b>','<b>Sí, asistencia médica</b>','No','No','No','<b>Sí, asistencia al viajero</b>','<b>Sí, asistencia al viajero</b>','<b>Sí, asistencia al viajero</b>','<b>Sí, asistencia al viajero</b>'],
+ ['Habitaciones','Dobles','Por confirmar','Por confirmar','Cotizado para 2','Por confirmar','4 estándar','4 estándar','4 estándar','4 estándar','<b>3 para 8 personas</b>','4 Superior Deluxe vista piscina','4 Junior suite king','Dobles/triples','Dobles/triples','Dobles/triples','Dobles/triples'],
+ ['Cancelación','Por confirmar','Por confirmar','Por confirmar','Reembolsable','Sujeta a cambios','Sujeta a cambios','Sujeta a cambios','Sujeta a cambios','Sujeta a cambios','Precio puede variar','Sujeta a disponibilidad','Sujeta a disponibilidad','No reembolsable','No reembolsable','No reembolsable','No reembolsable'],
+ ['Pago','Reserva $1.200.000 + cuotas','Pago al reservar','Pago al reservar','Pago al reservar','Por confirmar','Incluye fee bancario','Incluye fee bancario','Incluye fee bancario','Incluye fee bancario','Por confirmar','Un solo pago','Un solo pago','Reserva $1.500.000 c/u + abonos','Reserva $1.500.000 c/u + abonos','Reserva $1.500.000 c/u + abonos','Reserva $1.500.000 c/u + abonos']];
 $('mx').innerHTML=`<thead><tr><th>Criterio</th>${O.map(o=>`<th>${o.i}. ${o.n}</th>`).join('')}</tr></thead><tbody>${M.map(r=>`<tr><th>${r[0]}</th>${r.slice(1).map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody>`;
 
 const calc=()=>{const bag=(+$('cB').value||0)*Math.min(N,+$('cBn').value||0),food=(+$('cF').value||0)*N*4;
@@ -425,6 +441,7 @@ const todos=[['Nextfly','¿Qué aerolínea y qué horarios tienen los vuelos?'],
  ['Wakanda','¿El precio es igual para Silvana? ¿Cuánto cuesta subir de P5-BASIC a una tarifa con maleta?'],['Wakanda','¿Qué cubre el seguro? ¿Cómo es el pago (reserva y cuotas)? Pedir número de RNT'],
  ['Agencia Kevin','¿Nombre de la agencia, RNT, aerolínea y horarios? ¿Se pueden mover las fechas al 4–8 de abril?'],['Agencia Kevin','¿El traslado incluye el regreso hotel–aeropuerto? ¿Qué equipaje trae?'],['Agencia Kevin','¿La tarifa por adulto aplica igual a Silvana? ¿Cómo se pagan y cuánto es la reserva?'],
  ['Volados','¿Cuál Occidental es? ¿Incluye traslados? ¿Cómo repartir 8 personas en 3 habitaciones? ¿Se puede el 4–8 de abril?'],['Vision Tours','¿Por qué el Sunscape cuesta $6,9 M más que con Nextfly? ¿Se puede agregar traslado?'],['Vision Tours','Bahia Principe: ¿hay junior suites con 2 camas en vez de king? ¿Qué equipaje incluye Wingo?'],
+ ['Macura','¿Las fechas exactas son 4 al 8 de abril? ¿Cuánto cuesta la maleta y los asientos juntos?'],['Macura','¿Ocean El Faro en qué zona queda? ¿El seguro qué cubre?'],
  ['Todos','Pasaportes vigentes y permiso de salida de Silvana si no viaja con ambos padres']];
 let sv={};try{sv=JSON.parse(localStorage.getItem('pc27todo2')||'{}')}catch(e){}
 $('todo').innerHTML=todos.map((t,i)=>`<label><input type="checkbox" data-i="${i}" ${sv[i]?'checked':''}><span><span class="who">${t[0]}</span>${t[1]}</span></label>`).join('');
